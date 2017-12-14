@@ -81,10 +81,10 @@ void make_images_nik(Mat & I1,Mat & I2, Mat & I3,Mat & I4,float siz = 0.5)
 int tfxn()
 {
     
-    Mat I1 = imread("/home/hulio/Downloads/diff-matte/b0.png");
-    Mat I2 = imread("/home/hulio/Downloads/diff-matte/g0.png");
-    Mat B2 = imread("/home/hulio/Downloads/diff-matte/g0_blank.png");
-    Mat B1 = imread("/home/hulio/Downloads/diff-matte/b0_blank.png");
+    Mat I1 = imread("b0.png");
+    Mat I2 = imread("g0.png");
+    Mat B2 = imread("g0_blank.png");
+    Mat B1 = imread("b0_blank.png");
     Mat F;
 //     make_images_nik(I1,I2,B1,B2,0.5); %% If you want to resize a single frame of a very large image to see if it works
 
