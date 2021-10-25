@@ -28,7 +28,7 @@ Video files may be very slow to process depending on your system which is why th
 
 1. Install openCV: `sudo apt install libopencv libopencv-dev`
 2. Install dependencies as seen [here](https://linuxize.com/post/how-to-install-opencv-on-ubuntu-18-04/)
-3. Windows users see [this])(https://learnopencv.com/install-opencv-on-windows/) or use chocolatey
+3. Windows users see [this](https://learnopencv.com/install-opencv-on-windows/) or use chocolatey
 4. Install ffmpeg: `sudo apt install ffmpeg`
 5. Clone this repo: `git clone https://github.com/hoffsupes/Triangulation-Matting.git`
 
