@@ -93,6 +93,3 @@ Makefile tests are included, to run them traverse to the root of the directory a
 
 7. `tester-test`:
     Test capabilites of the `tester` class
-
-
-There are tests for other capabilities, (please use a shell to do this or look into installing one first) to use them please type make, press space and press tab to see all options available.
