@@ -17,8 +17,8 @@ and solution is X = A_inverse*b, where X contains values of alphamask and image
 
 Has capability to process videos (read and write) and to do this matting on every frame of a video.
 
-The original green and blue background video which I originally used a long time ago is sadly lost ( :( ) but I have created two artificial videos
-from the still images I had. These artifical videos are simply repitions of the same image over a thirty second period, sampled at 30 frames per second.
+The original green and blue background videos which I originally used a long time ago are sadly lost ( :( ) but I have created two artificial videos
+from the still images I had. These artifical videos are simply repitions of the same image over a thirty second period, sampled at 30 frames per second. When matting is run using them though, due to certain discrepencies in image quality when performing that image to video conversion (the background colors end up getting varied and destroyed due to the loss in quality, hence a "mismatch" from the original background images, i.e. the euations you see above assume that we're using the same background images at a time, blue-blue or green-green which is not happening anymore), the actual alpha matte and matted frame from the per frame of the video vary from when those same still images (used to produce the videos) are independently used to create the matte. This is very interesting and you can even see this when you try out the tests.
 
 To view only matting results, use `make matte_test` after the install procedures below as the `main` app performs the cumulation of everything (Video Matting).
 
@@ -54,13 +54,13 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
 
                path_to_green_video \
 
-               path_to_green_still_image \
+               path_to_blue_still_image \
 
                path_to_green_still_image \
 
-               path_to_green_foreground_image_folder \
+               path_to_foreground_image_folder \
 
-               path_to_green_alpha_image_folder \
+               path_to_alpha_image_folder \
 
                image_scaling_value_for_faster_processing \
 
@@ -68,6 +68,27 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
 
                0_or_1_to_display_output_or_not
 ```
+
+The Options are explained as follows:
+
+-- path_to_blue_video: Relative path to the blue background video
+
+-- path_to_green_video: Relative path to the green background video
+
+-- path_to_blue_still_image: Relative path to the blue still image
+
+-- path_to_green_still_image: Relative path to the green still image
+
+-- path_to_foreground_image_folder: Relative path to the foreground image folder, please dont include a '/' at the end. That is use `data/Foreground` instead of `data/Foregound/`
+
+-- path_to_alpha_image_folder: Relative path to the alpha mask image folder, please dont include a '/' at the end. That is use `data/Alpha` instead of `data/Alpha/`
+
+-- image_scaling_value_for_faster_processing: Image scaling value, since matrix inverse per pixel is very computationally extensive, if you really wanted to test the whole video, or see this in action (!). Please use a lower value (range is 0 - 1 ) e.g. 0.3 and this will scale or resize (downsample) your images down to a smaller size as per the scale given before doing trimat (the image intensity estimation process is even worse for something like Trimatting, which actually needs fine high quality per pixel values to give clean mattes -- you can see this if you try out `make matte-test` in the root directory to run the `matte_test.cpp` or look at the pre-rendered example images in the `data` folder) but this should suffice since a) the video data itself is only for testing b) this is only present should you want to see this thing run to completion.
+
+-- 0_or_1_for_video_display_only: `0` or `1` numerical values, denoting `true` or `false` values to denote if you want to output only videos or the intermediate files, foreground and alpha mask as well
+
+-- 0_or_1_to_display_output_or_not: `0` or `1` numerical values, denoting `true` or `false` values to denote if you want to display the matte and foreground values or not
+
 
 ## Test Suites
 
@@ -85,11 +106,26 @@ Makefile tests are included, to run them traverse to the root of the directory a
 4. `make matte-test`:
     To test `Matte` application on an `Image`
 
-5. `image-test`:
+5. `make image-test`:
     To test the capabilies of the `Image` class
 
-6. `utilities-test`:
+6. `make utilities-test`:
     Test capabilites of the `miniUtilities` class
 
-7. `tester-test`:
+7. `make tester-test`:
     Test capabilites of the `tester` class
+
+8. `make clean`:
+    Cleans everything up, deletes content of `Foreground` and `Alpha` folder and even the `bin` folder
+
+## Directory structure
+
+`bin/`: Contains all the binary files
+
+`data/`: Contains image files and subfolders `Videos`, `Foregound`, `Alpha` which contain other image and video files
+
+`include/trimat`: Contains the header (class definition) in `.h` files
+
+`src`: Contains member functions in `.cpp` files
+
+`tests`: Contains all the tests
