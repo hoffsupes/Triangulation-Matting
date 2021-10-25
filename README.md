@@ -37,7 +37,7 @@ Video files may be very slow to process depending on your system which is why th
 
 To perform video matting, traverse to the root of the project directory and run:
 
-1. `g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;`
+1. ```g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;```
 
 2. ```
       ./bin/main \
