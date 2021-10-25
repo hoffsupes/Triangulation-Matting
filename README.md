@@ -59,6 +59,7 @@ To perform video matting, traverse to the root of the project directory and run:
 
                0_or_1_to_display_output_or_not \
 
+
                ```
 #### Test Suites
 
