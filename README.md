@@ -6,9 +6,9 @@ given background produce the images of the object (on the different backgrounds)
 
 This can be thought of as:
 
-**BlueBackgroundForegroundImage = alpha * foreground + (1 - alpha)* BlankBlueBackgroundImage**
+**BlueBackgroundForegroundImage = alpha*foreground + (1 - alpha)* BlankBlueBackgroundImage**
 
-**GreenBackgroundForegroundImage = alpha * foreground + (1 - alpha)* BlankGreenBackgroundImage**
+**GreenBackgroundForegroundImage = alpha*foreground + (1 - alpha)* BlankGreenBackgroundImage**
 
 This produces **six equations per pixel** (three colors, RGB considered in two images at every pixel), which is formulated as a system of linear equations:
 
