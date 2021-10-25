@@ -43,15 +43,12 @@ OpenCV is still seemingly limited (or at least is a bit problematic in) writing 
 1. To perform video matting, traverse to the root of the project directory and run:
 
 ```
-
 g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;
-
 ```
 
 2. Next run the `main` binary which has been created in the `bin/` folder.
 
-```
-      ./bin/main \
+```      ./bin/main \
               path_to_blue_video \
 
                path_to_green_video \
@@ -69,7 +66,6 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
                0_or_1_for_video_display_only \
 
                0_or_1_to_display_output_or_not
-
 ```
 
 ## Test Suites
