@@ -74,16 +74,25 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
 Makefile tests are included, to run them traverse to the root of the directory and execute accordingly as given below:
 
 1. `make test-all`:
-    To test everything, all features
+    To test everything, all features present within
 
 2. `make video_matte-test`:
-    To test video matting
+    To test the `VideoMatte` capabilties
 
 3. `make video-test`:
-    To test video reading and writing
+    To test `Video` reading and writing
 
 4. `make matte-test`:
-    To test video reading writing
+    To test `Matte` application on an `Image`
+
+5. `image-test`:
+    To test the capabilies of the `Image` class
+
+6. `utilities-test`:
+    Test capabilites of the `miniUtilities` class
+
+7. `tester-test`:
+    Test capabilites of the `tester` class
 
 
 There are tests for other capabilities, (please use a shell to do this or look into installing one first) to use them please type make, press space and press tab to see all options available.
