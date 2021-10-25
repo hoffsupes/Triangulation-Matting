@@ -40,14 +40,23 @@ To perform video matting, traverse to the root of the project directory and run:
 1. `g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;`
 
 2. `./bin/main path_to_blue_video \
+
                path_to_green_video \
+
                path_to_green_still_image \
+
                path_to_green_still_image \
+
                path_to_green_foreground_image_folder \
+
                path_to_green_alpha_image_folder \
+
                image_scaling_value_for_faster_processing \
+
                0_or_1_for_video_display_only \
+
                0_or_1_to_display_output_or_not \
+               
                `
 #### Test Suites
 
@@ -57,13 +66,13 @@ Makefile tests are included, to run them traverse to the root of the directory a
     To test everything, all features
 
 2. `make video_matte-test`:
-    To test video Matting
+    To test video matting
 
 3. `make video-test`:
     To test video reading and writing
 
 4. `make matte-test`:
-    To test video reading writig
+    To test video reading writing
 
 
 There are tests for other capabilities, (please use a shell to do this or look into installing one first) to use them please type make, press space and press tab to see all options available.
