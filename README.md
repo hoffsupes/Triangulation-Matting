@@ -95,7 +95,7 @@ The above options are explained as follows:
 
 **0_or_1_for_video_display_only**: `0` or `1` numerical values, denoting `true` or `false` values to denote if you want to output (write output files) only videos or the intermediate files, foreground and alpha mask as well
 
-**0_or_1_to_display_output_or_not**: `0` or `1` numerical values, denoting `true` or `false` values to denote if you want to display (i.e. display output of video frames as they are being processed) the matte and foreground values or not
+**0_or_1_to_display_output_or_not**: `0` or `1` numerical values, denoting `true` or `false` values to denote if you want to display (i.e. display output of video frames as they are being processed) the matte and foreground images (in concatenated fashion) or not
 
 
 ## Test Suites
