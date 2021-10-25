@@ -20,11 +20,16 @@ Has capability to process videos (read and write) and to do this matting on ever
 The original green and blue background video which I originally used a long time ago is sadly lost ( :( ) but I have created two artificial videos
 from the still images I had. These artifical videos are simply repitions of the same image over a thirty second period, sampled at 30 frames per second.
 
-To view only matting results, use `make matte_test` after the install procedures below as the `main` app performs the cumulation of everything (Video Matting)
+To view only matting results, use `make matte_test` after the install procedures below as the `main` app performs the cumulation of everything (Video Matting).
 
 Video files may be very slow to process depending on your system which is why the scale parameter has been provided.
 
-#### Installation
+I've modeled my own very simple `Image` class which is derived by a `Video` class. The ``Video`` class has capabilies to very simply read and write videos all in one place.
+That includes releasing the actual object files after use which is very important in a language like C++. I also create a Matting (`Matte`) class which relies on the `Image` class to do the Matting. The Matting class is then extended to a `VideoMatte` class (which inherits all the properties of the Matting class) that adds capability to read the blue and green background videos and write a results video using capabilities of the `Video` class.
+
+OpenCV is still seemingly limited (or at least is a bit problematic in) writing anything (in terms of the VideoWriter object writing the videos) other than ".avi" out of the box (if you install from the repo), so please use avi formats to write output files.
+
+## Installation
 
 1. Install openCV: `sudo apt install libopencv libopencv-dev`
 2. Install dependencies as seen [here](https://linuxize.com/post/how-to-install-opencv-on-ubuntu-18-04/)
@@ -33,13 +38,19 @@ Video files may be very slow to process depending on your system which is why th
 5. Clone this repo: `git clone https://github.com/hoffsupes/Triangulation-Matting.git`
 
 
-#### Usage
+## Usage
 
-To perform video matting, traverse to the root of the project directory and run:
+1. To perform video matting, traverse to the root of the project directory and run:
 
-1. ```g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;```
+```
 
-2. ```
+g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;
+
+```
+
+2. Next run the `main` binary which has been created in the `bin/` folder.
+
+```
       ./bin/main \
               path_to_blue_video \
 
@@ -57,8 +68,11 @@ To perform video matting, traverse to the root of the project directory and run:
 
                0_or_1_for_video_display_only \
 
-               0_or_1_to_display_output_or_not \ ``
-#### Test Suites
+               0_or_1_to_display_output_or_not
+
+```
+
+## Test Suites
 
 Makefile tests are included, to run them traverse to the root of the directory and execute accordingly as given below:
 
