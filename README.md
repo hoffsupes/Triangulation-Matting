@@ -12,6 +12,8 @@ This can be thought of as:
 
 ![matting](https://user-images.githubusercontent.com/28497335/138963602-8a587a14-66e9-44fa-8e72-17e2481bdc2a.png)
 
+(Credit to [brown university](http://cs.brown.edu/courses/cs129/results/final/njooma/) for the above visual)
+
 Has capability to process videos (read and write) and to do this matting on every frame of a video.
 
 The original green and blue background videos which I originally used a long time ago are sadly lost ( :( ) but I have created two artificial videos
