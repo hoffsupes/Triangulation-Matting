@@ -53,7 +53,7 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
 2. Next run the `main` binary which has been created in the `bin/` folder.
 
 ```      
-./bin/main \   path_to_blue_video \
+./bin/main    path_to_blue_video \
                path_to_green_video \
                path_to_blue_still_image \
                path_to_green_still_image \
