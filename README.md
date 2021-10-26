@@ -49,7 +49,6 @@ This work was originally done towards a final project in a Computer Vision cours
 ```
 g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;
 ```
-
 2. Next run the `main` binary which has been created in the `bin/` folder.
 
 ```      
@@ -100,19 +99,19 @@ Makefile tests are included, to run them traverse to the root of the directory a
 
 ## Directory structure
 
-`bin/`: Contains all the binary files
-`data/`: Contains image files and subfolders `Videos`, `Foregound`, `Alpha` which contain other image and video files
-`include/trimat`: Contains the header (class definition) in `.h` files
-`src`: Contains member functions in `.cpp` files
-`tests`: Contains all the tests
+1. `bin/`: Contains all the binary files
+2. `data/`: Contains image files and subfolders `Videos`, `Foregound`, `Alpha` which contain other image and video files
+3. `include/trimat`: Contains the header (class definition) in `.h` files
+4. `src`: Contains member functions in `.cpp` files
+5. `tests`: Contains all the tests
 
 ## Classes
 
 The following classes were used towards this problem. Attempts have been made to take the most relevant (towards this specific endeavor) capabilities in OpenCV and bring them closer to the data that they would need to operate on. Obviously, OpenCV is much larger and more massive than this (as it covers a lot more immensity in terms of features offered across a wide variety of computer vision and even separate pattern recognition tasks, e.g. means to train classical machine learning models on data which might not have anything to do with computer vision) and these are select few capabilities which seemed most pertinent and also because it seemed that some additional capabilities of simplicity can be brought in for certain methods (i.e. as compared to using them out of the box from OpenCV vs modified here so that repeated use becomes easier).
 
-`Image`: Creates a simple image class, which provides relatively easier access for commonly used OpenCV image functions, e.g. `imshow` is bundled in with the image container rather than separate, images can be easily allocated from files very simply etc..
-`Video`: Models OpenCV's `VideoCapture` and `VideoWriter` in one place and simple method calls replace complicated allocation (e.g. `VideoCapture capture;`) and deallocation (`capture.release();`) and take care of some other things behind the scenes as well, to make their use simple and painless (e.g. reading videos is much simpler, at least better than typing in massive OpenCV VideoCapture or VideoWriter Properties like CAP_PROP_WHITE_BALANCE_BLUE_U, to just quickly get a property or read one frame).
-`Matte`: Does matting using on `Image` objects
-`VideoMatte`: Extends capabilities of the `Matte` class to handle Videos. Has functionality to contain green, blue (i.e. any background colors one and two relevant towards triangulation matting) and even writing the result videos.
-`tester`: Provides simple testing capabilities
-`miniUtilities`: Contains simple string utilities related to filehandling
+1. `Image`: Creates a simple image class, which provides relatively easier access for commonly used OpenCV image functions, e.g. `imshow` is bundled in with the image container rather than separate, images can be easily allocated from files very simply etc..
+2. `Video`: Models OpenCV's `VideoCapture` and `VideoWriter` in one place and simple method calls replace complicated allocation (e.g. `VideoCapture capture;`) and deallocation (`capture.release();`) and take care of some other things behind the scenes as well, to make their use simple and painless (e.g. reading videos is much simpler, at least better than typing in massive OpenCV VideoCapture or VideoWriter Properties like CAP_PROP_WHITE_BALANCE_BLUE_U, to just quickly get a property or read one frame).
+3. `Matte`: Does matting using on `Image` objects
+4. `VideoMatte`: Extends capabilities of the `Matte` class to handle Videos. Has functionality to contain green, blue (i.e. any background colors one and two relevant towards triangulation matting) and even writing the result videos.
+5. `tester`: Provides simple testing capabilities
+6. `miniUtilities`: Contains simple string utilities related to filehandling
