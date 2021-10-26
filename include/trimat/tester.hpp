@@ -22,7 +22,21 @@ class tester
   public:
   void TESTER(string testname,bool condition, source_location location  = source_location::current());
   void DISPLAY_SUMMARY();
+  vector<string> get_fails();
+  vector<string> get_successes();
 };
+
+vector<string> tester::get_fails()
+{
+  // getter for fails
+  return fails;
+}
+
+vector<string> tester::get_successes()
+{
+  // getter for successes
+  return successes;
+}
 
 void tester::TESTER(string testname, bool condition, source_location location)
 {
@@ -43,6 +57,9 @@ void tester::TESTER(string testname, bool condition, source_location location)
 
 void tester::DISPLAY_SUMMARY()
 {
+
+  // displays summary of errors
+
   if(fails.size())
   {
     cout << "\n\n\n Number of failures: " << fails.size();
