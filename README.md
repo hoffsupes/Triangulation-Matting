@@ -67,21 +67,13 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
 The above options are explained as follows:
 
 1. **path_to_blue_video**: Relative path to the blue background video
-
 2. **path_to_green_video**: Relative path to the green background video
-
 3. **path_to_blue_still_image**: Relative path to the blank blue still image
-
 4. **path_to_green_still_image**: Relative path to the blank green still image
-
 5. **path_to_foreground_image_folder**: Relative path to the foreground image folder, please dont include a '/' at the end. That is use `data/Foreground` instead of `data/Foregound/`
-
 6. **path_to_alpha_image_folder**: Relative path to the alpha mask image folder, please dont include a '/' at the end. That is use `data/Alpha` instead of `data/Alpha/`
-
 7. **image_scaling_value_for_faster_processing**: Image scaling value, since matrix inverse per pixel is very computationally extensive, if you really wanted to test the whole video, or see this in action (!). Please use a lower value (range is between 0 - 1 ) e.g. 0.3 and this will scale or resize (downsample) your images down to a smaller size as per the scale given before doing trimat (the image intensity estimation process is even worse for something like Trimatting, which actually needs fine high quality per pixel values to give clean mattes -- you can see this if you try out `make matte-test` in the root directory to run the `matte_test.cpp` or look at the pre-rendered example images in the `data` folder) but this should suffice since a) the video data itself is only for testing b) this is only present should you want to see the code run to completion.
-
 8. **0_or_1_for_video_display_only**: `0` or `1` numerical values, denoting `true` or `false` values to denote if you want to output (write output files) only videos or the intermediate files, foreground and alpha mask as well
-
 9. **0_or_1_to_display_output_or_not**: `0` or `1` numerical values, denoting `true` or `false` values to denote if you want to display (i.e. display output of video frames as they are being processed) the matte and foreground images (in concatenated fashion) or not
 
 
