@@ -26,7 +26,7 @@ The original green and blue background videos which I originally used a long tim
 from the still (foreground with relevant, blue or green background color) images I still had. These artifical videos are simply repitions of the same image over a thirty second period, sampled at 30 frames per second. When matting is run using them though, due to certain discrepencies in image quality when performing that image to video conversion (the background colors end up getting varied and destroyed due to the loss in quality, hence a "mismatch" from the original background images to the original blank images I have, i.e. the equations you see above assume that we're using the same background images at a time, object_on_blue_background-blank_blue_background or object_on_green_background-blank_green_background which is not happening anymore), the actual alpha matte and matted frame from the per frame of the video vary from when those same still images (used to produce the videos) are independently used to create the matte. This is very interesting and you can even see this when you try out the tests.
 
 I've modeled my own very simple `Image` class which is derived by a `Video` class. The ``Video`` class has capabilies to very simply read and write videos all in one place.
-That includes releasing the actual object files after use which is very important in a language like C++. I also create a Matting (`Matte`) class which relies on the `Image` class to do the Matting. The Matting class is then extended to a `VideoMatte` class (which inherits all the properties of the Matting class) that adds capability to read the blue and green background videos, and write the result video; all using capabilities of the `Video` class.
+That includes releasing the actual object files after use which is very important in a language like C++. I also create a Matting (`Matte`) class which relies on the `Image` class to do the Matting. The Matting class is then extended to a `VideoMatte` class (which inherits all the properties of the Matting class) that adds capability to read the blue and green background videos, and write the result video; all using capabilities of the `Video` class. Although point to note, that this is in no way a critique of the openCV library which absolutely amazing and this work only seeks to make the methods which would typically be relevant (or more commonly used in regards to it) to this specific problem(i.e. video matting) simpler to use and encapsulated closely with the data it would work on. The numerosity of OpenCV is what make it quite powerful in terms of the massive number of features it offers.
 
 To view only matting results, use `make matte_test` after the install procedures below as the `main` app performs the cumulation of everything (Video Matting).
 
@@ -138,11 +138,13 @@ Makefile tests are included, to run them traverse to the root of the directory a
 
 `tests`: Contains all the tests
 
-## Classes Created
+## Classes
+
+The following classes were used towards this problem. Attempts have been made to take the most relevant (towards this specific endeavor) capabilities in OpenCV and bring them closer to the data that they would need to operate on. Obviously, OpenCV is much larger and more massive than this (as it covers a lot more immensity in terms of features offered across a wide variety of computer vision and even separate pattern recognition tasks, e.g. means to train classical machine learning models on data which might not have anything to do with computer vision) and these are select few capabilities which seemed most pertinent and also because it seemed that some additional capabilities of simplicity can be brought in for certain methods (i.e. as compared to using them out of the box from OpenCV vs modified here so that repeated use becomes easier).
 
 `Image`: Creates a simple image class, which provides relatively easier access for commonly used OpenCV image functions, e.g. `imshow` is bundled in with the image container rather than separate, images can be easily allocated from files very simply etc..
 
-`Video`: Models OpenCV's `VideoCapture` and `VideoWriter` in one place and simple method calls replace complicated allocation (e.g. `VideoCapture capture;`) and deallocation (`capture.release();`) and take care of some other things behind the scenes as well, to make their use simple and painless.
+`Video`: Models OpenCV's `VideoCapture` and `VideoWriter` in one place and simple method calls replace complicated allocation (e.g. `VideoCapture capture;`) and deallocation (`capture.release();`) and take care of some other things behind the scenes as well, to make their use simple and painless (e.g. reading videos is much simpler, at least better than typing in massive OpenCV VideoCapture or VideoWriter Properties like CAP_PROP_WHITE_BALANCE_BLUE_U, to just quickly get a property or read one frame).
 
 `Matte`: Does matting using on `Image` objects
 

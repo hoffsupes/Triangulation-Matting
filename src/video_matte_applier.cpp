@@ -65,7 +65,8 @@ void VideoMatte::mattedVideoOutput(string foregroundpath, string maskpath,string
       hconcat(mattedFrame.get_image(),newmask,newmask);
       imshow("Image Matting Results",newmask);
       waitKey(25);
-      cout << "\n Frame Number: " << i << "\n";
+      if(i%100 == 0)
+      {cout << "\n Frame Number: " << i << "\n";}
     }
 
     i++;

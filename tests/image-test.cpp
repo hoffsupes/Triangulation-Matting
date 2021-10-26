@@ -13,28 +13,28 @@ tf.TESTER("get_name image test",frame.get_name() == string("Test Image"));  // t
 Mat image = frame.get_image();    // get Mat object
 frame.show_name();    // show name
 frame.resize_image(0.5);  // resze easily by scaling
-frame.convert(CV_8U); // convert to 8 bit pixel values
+frame.convert(CV_8U,255.0); // convert to 8 bit pixel values
 Mat image_frame = frame.get_image();
 
 Size ifsize = image_frame.size();
 Size isize = image.size();
 
-tf.TESTER("resize_image test",(ifsize.height == isize.height/2) and (ifsize.width == isize.width/2));
+tf.TESTER("resize_image test",(ifsize.height == isize.height/2) and (ifsize.width == isize.width/2)); // Checking to see if resize worked or not
 
-frame.write("data/b0_test_write.png");
+frame.write("data/b0_test_write.png");    // writing to a file
 
-Image newframe = Image("data/b0_test_write.png");
+Image newframe = Image("data/b0_test_write.png");   // reading that file again
 
 Mat image_newframe = newframe.get_image();
 Mat xord;
-bitwise_xor(image_frame,image_newframe,xord);
+bitwise_xor(image_frame,image_newframe,xord);   // checking difference through XORing, distinct values will be 1, same values zero, want to see if everything is zero
 
 Mat ch1[3];
-split(xord,ch1);
-tf.TESTER("image write test", countNonZero(ch1[1]+ch1[0]+ch1[2]) == 0);
+split(xord,ch1);  // binary 3 channel output, split into channels
+tf.TESTER("image write test", countNonZero(ch1[1]+ch1[0]+ch1[2]) == 0);   // Was the written file b0_test_write.png done so successfully?
 
-Image frameNew = Image(image);
-frame.assign_name("show() test");
-frame.show(0);
+Image frameNew = Image(image);  // intialize Image from Mat
+frame.assign_name("show() test"); // assign a name
+frame.show(0);    // show it
 return 0;
 }
