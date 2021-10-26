@@ -10,15 +10,7 @@ This can be thought of as:
 
 **GreenBackgroundForegroundImage = alpha*foreground + (1 - alpha) * BlankGreenBackgroundImage**
 
-This produces **six equations** per pixel (three colors, RGB considered in two images at every pixel), which is formulated as a system of linear equations:
-
-**A*X = b**
-
-and solution is
-
-**X = A_inverse * b**
-
-where X contains values of alphamask and image
+![matting](https://user-images.githubusercontent.com/28497335/138963602-8a587a14-66e9-44fa-8e72-17e2481bdc2a.png)
 
 Has capability to process videos (read and write) and to do this matting on every frame of a video.
 
