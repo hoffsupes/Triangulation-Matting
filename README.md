@@ -140,7 +140,7 @@ Makefile tests are included, to run them traverse to the root of the directory a
 
 ## Classes Created
 
-`Image`: Creates a simple image class, which provides relatively easier access for commonly used OpenCV image functions, e.g. `imshow` is bundled in with the image container rather than separate.
+`Image`: Creates a simple image class, which provides relatively easier access for commonly used OpenCV image functions, e.g. `imshow` is bundled in with the image container rather than separate, images can be easily allocated from files very simply etc..
 
 `Video`: Models OpenCV's `VideoCapture` and `VideoWriter` in one place and simple method calls replace complicated allocation (e.g. `VideoCapture capture;`) and deallocation (`capture.release();`) and take care of some other things behind the scenes as well, to make their use simple and painless.
 

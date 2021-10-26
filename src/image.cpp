@@ -53,7 +53,7 @@ void Image::resize_image(double scale)
 
 void Image::convert(int code,double scale)
 {
-  // convert image to another datatype, e.g. float to integer, with scale for casting image values,scale is alpha paramater in convertTo function
+  // convert image to another datatype, e.g. float to 8-bit pixel values, with scale for casting image values,scale is alpha paramater in convertTo function
 
 image_container.convertTo(image_container,code,scale);
 }

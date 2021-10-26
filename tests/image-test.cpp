@@ -3,17 +3,17 @@
 
 int main() {
 tester tf;
-Image frame = Image("data/b0.png");
-frame.assign_name("Test Image");
-frame.convert(CV_32F);
-frame.normalize_image(0,1,NORM_MINMAX);
-cout << "Using get_name : " << frame.get_name() << "\n using show_name \n\n";
+Image frame = Image("data/b0.png"); // intialize an image from a file
+frame.assign_name("Test Image");  // name an image
+frame.convert(CV_32F);  // convert to float 32 bit
+frame.normalize_image(0,1,NORM_MINMAX); // normalize image using a minmax method
+cout << "Using get_name : " << frame.get_name() << "\n using show_name \n\n"; // using get_name
 
-tf.TESTER("get_name image test",frame.get_name() == string("Test Image"));
-Mat image = frame.get_image();
-frame.show_name();
-frame.resize_image(0.5);
-frame.convert(CV_8U);
+tf.TESTER("get_name image test",frame.get_name() == string("Test Image"));  // testing to see if get_name works
+Mat image = frame.get_image();    // get Mat object
+frame.show_name();    // show name
+frame.resize_image(0.5);  // resze easily by scaling
+frame.convert(CV_8U); // convert to 8 bit pixel values
 Mat image_frame = frame.get_image();
 
 Size ifsize = image_frame.size();
