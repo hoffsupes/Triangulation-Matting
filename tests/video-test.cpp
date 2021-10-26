@@ -1,8 +1,10 @@
 #include <trimat/video.h>
 #include <tgmath.h>
+#include <trimat/tester.hpp>
 
 int main()
 {
+  tester tf;
   Video emptyvideo = Video();
   Video video = Video("data/Videos/nasa.mp4");
   unordered_map<string,string> param = video.get_parameters();
@@ -21,12 +23,21 @@ int main()
   cout << "The parameters are: \n";
   for (auto para : param2)
   {cout << para.first << " " << para.second << endl;}
+
+  tf.TESTER("Check to see if parameters have been written in a case when capture is in use and writer is used on same object,overwriting past values",newp == param2);
+
   emptyvideo.set_parameters(param);
   unordered_map<string,string> ep = emptyvideo.get_parameters();
   for (auto para : ep)
+
+  tf.TESTER("Check to see if empty non-VideoCapture-initialized object successfully sets parameters",param == ep);
+
   {cout << para.first << " " << para.second << endl;}
   emptyvideo.setWriterToPath("data/Videos/emptyvideo.avi",newp,true);
   unordered_map<string,string> ep2 = emptyvideo.get_parameters();
+
+
+  tf.TESTER("Check to see if empty non VideoCapture initialized object, which was initalized through a VideoWriter parameter overwrite, successfully sets parameters or not",newp == ep2);
   for (auto para : ep2)
   {cout << para.first << " " << para.second << endl;}
   video.playback();
