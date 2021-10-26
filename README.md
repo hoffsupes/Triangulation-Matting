@@ -10,6 +10,8 @@ This can be thought of as:
 
 **GreenBackgroundForegroundImage = alpha*foreground + (1 - alpha) * BlankGreenBackgroundImage**
 
+or
+
 ![matting](https://user-images.githubusercontent.com/28497335/138963602-8a587a14-66e9-44fa-8e72-17e2481bdc2a.png)
 
 (Credit to [brown university](http://cs.brown.edu/courses/cs129/results/final/njooma/) for the above visual)
