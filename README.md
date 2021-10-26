@@ -81,7 +81,7 @@ The above options are explained as follows:
 Makefile tests are included, to run them traverse to the root of the directory and execute accordingly as given below:
 
 1. `make test-all`:
-    To test everything, all features present within
+    Run complete test suite
 2. `make video_matte-test`:
     To test the `VideoMatte` capabilties
 3. `make video-test`:
