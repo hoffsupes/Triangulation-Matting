@@ -44,6 +44,9 @@ int main()
   for (auto para : ep2)
   {cout << para.first << " " << para.second << endl;}
   video.playback(); // playback video, default rate of 25 FPS
+
+  tf.DISPLAY_SUMMARY();
+
   cout << "\n Checking to see if abberant attempt to read from non-initialized VideoCapture will result in exit from program or not. Successful run shoud exit program gracefully after displaying a message in next line. \n";
   emptyvideo.get_frame(); // checking to see if abberant attempt to read from non-existant VideoCapture stream (since we never gave it input path) is accounted for or not
   return 0;

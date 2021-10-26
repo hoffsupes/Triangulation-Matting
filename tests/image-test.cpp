@@ -36,5 +36,6 @@ tf.TESTER("image write test", countNonZero(ch1[1]+ch1[0]+ch1[2]) == 0);   // Was
 Image frameNew = Image(image);  // intialize Image from Mat
 frame.assign_name("show() test"); // assign a name
 frame.show(0);    // show it
+tf.DISPLAY_SUMMARY();
 return 0;
 }

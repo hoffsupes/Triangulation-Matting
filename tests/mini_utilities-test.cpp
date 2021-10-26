@@ -16,5 +16,7 @@ tf.TESTER("sanitize_folder_path test",utility.sanitize_folder_path("foreground/"
 tf.TESTER("sanitize_folder_path test",utility.sanitize_folder_path("background/") == string("background"));
 tf.TESTER("sanitize_folder_path test",utility.sanitize_folder_path("alpha/") == string("alpha"));
 
+tf.DISPLAY_SUMMARY();
+
 return 0;
 }
