@@ -1,6 +1,6 @@
 # Triangulation Matting
 
-Does triangulation matting using blue and green background images. Two images of the same object are taken with different backgrounds, blue and green.
+Does triangulation matting using blue and green background images (and videos). Two images of the same object are taken with different backgrounds, blue and green.
 This is used along with two blank images of same background to infer values of the alphamask and foreground which when blended together with the
 given background produce the images of the object (on the different backgrounds).
 
@@ -16,7 +16,7 @@ or
 
 (Credit to [brown university](http://cs.brown.edu/courses/cs129/results/final/njooma/) for the above visual)
 
-Has capability to process videos (read and write) and to do this matting on every frame of a video.
+Has capability to process videos (read and write) and to do this matting on every frame of a video and on still images.
 
 The original green and blue background videos which I originally used a long time ago are sadly lost ( :( ) but I have created two artificial videos
 from the still (foreground with relevant, blue or green background color) images I still had. These artificial videos are simply repetitions of the same image over a thirty second period, sampled at 30 frames per second. When matting is run using them though, due to certain discrepancies in image quality when performing that image to video conversion (the background colors end up getting varied and destroyed due to the loss in quality, hence a "mismatch" from the original background images to the original blank images I have, i.e. the equations you see above assume that we're using the same background images at a time, object_on_blue_background-blank_blue_background or object_on_green_background-blank_green_background which is not happening anymore), the actual alpha matte and matted frame from the per frame of the video vary from when those same still images (used to produce the videos) are independently used to create the matte. This is very interesting and you can even see this when you try out the tests.
@@ -24,9 +24,9 @@ from the still (foreground with relevant, blue or green background color) images
 I've modeled my own very simple `Image` class which is used by a `Video` class. The ``Video`` class has capabilities to very simply read and write videos all in one place.
 That includes releasing the actual object files after use which is very important in a language like C++. I also create a Matting (`Matte`) class which relies on the `Image` class to do the Matting. The Matting class is then extended to a `VideoMatte` class (which inherits all the properties of the Matting class) that adds capability to read the blue and green background videos, and write the result video; all using capabilities of the `Video` class. Although point to note, that this is in no way a critique of the openCV library which absolutely amazing and this work only seeks to make the methods which would typically be relevant (or more commonly used in regards to it) to this specific problem(i.e. video matting) simpler to use and encapsulated closely with the data it would work on. The numerosity of OpenCV is what make it quite powerful in terms of the massive number of features it offers.
 
-To view only matting results, use `make matte_test` after the install procedures below as the `main` app performs the culmination of everything (Video Matting).
+Supports both `Still Image Matting` as well as `Video Matting`.
 
-Video files may be very slow to process depending on your system which is why the scale parameter has been provided for testing purposes.
+Video files may be very slow to process depending on your system which is why the scale parameter has been provided for (faster) testing purposes.
 
 OpenCV is still seemingly limited (or at least is a bit problematic in) writing anything (in terms of the `VideoWriter` object writing the videos) other than ".avi" out of the box (if you install from the repo), so please use avi formats to write output files.
 
@@ -44,6 +44,39 @@ This work was originally done towards a final project in a Computer Vision cours
 
 ## Usage
 
+### Still Image Matting
+
+1. To perform still image matting, traverse to the root of the project directory and run:
+
+```
+g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/matte_applier.cpp  -Iinclude -o bin/main `pkg-config --cflags --libs opencv4`;
+```
+2. Next run the `main` binary which has been created in the `bin/` folder.
+
+```      
+./bin/main     image-matte \
+               path_to_blue_image \
+               path_to_green_image \
+               path_to_blue_still_image \
+               path_to_green_still_image \
+               path_to_foreground_image \
+               path_to_alpha_image \
+               image_scaling_value_for_faster_processing \
+               0_or_1_for_video_display_only \
+               0_or_1_to_display_output_or_not
+```
+
+The above options are explained as follows:
+
+1. **path_to_blue_image**: Relative path to the blue background image
+2. **path_to_green_image**: Relative path to the green background image
+3. **path_to_blue_still_image**: Relative path to the blank blue still image
+4. **path_to_green_still_image**: Relative path to the blank green still image
+5. **path_to_foreground_image**: Relative path to the foreground image
+6. **path_to_alpha_image**: Relative path to the alpha mask image
+
+### Video Matting
+
 1. To perform video matting, traverse to the root of the project directory and run:
 
 ```
@@ -52,7 +85,8 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
 2. Next run the `main` binary which has been created in the `bin/` folder.
 
 ```      
-./bin/main    path_to_blue_video \
+./bin/main     video-matte \
+               path_to_blue_video \
                path_to_green_video \
                path_to_blue_still_image \
                path_to_green_still_image \

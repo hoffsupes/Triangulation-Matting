@@ -11,7 +11,9 @@ int main()
   finalMask.convert(CV_8UC1,255.0); // 8 bit pixel values
   mattedImage.convert(CV_8UC3,255.0); // 8 bit pixel values
   mattedImage.write("data/mattedImage.png");
+  cout << "\n Matted Image has been written to data/mattedImage.png \n";
   finalMask.write("data/finalMask.png");  // write images
+  cout << "\n finalMask has been written to data/finalMask.png \n";
   finalMask.show(); // show them
   return 0;
 }
