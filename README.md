@@ -173,3 +173,7 @@ The following classes were used towards this problem. Attempts have been made to
 4. `VideoMatte`: Extends capabilities of the `Matte` class to handle Videos. Has functionality to contain green, blue (i.e. any background colors one and two relevant towards triangulation matting) and even writing the result videos.
 5. `tester`: Provides simple testing capabilities
 6. `miniUtilities`: Contains simple string utilities related to filehandling
+
+##### Feedback
+
+###### If you notice any inconsitencies or have any input to provide, feel free to reach out to me at dassgaurav93@gmail.com
