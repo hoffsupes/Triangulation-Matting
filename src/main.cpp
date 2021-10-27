@@ -3,16 +3,16 @@
 
 int main(int argc, char** argv) // main
 {
-  if((argc < 2) and (argc != 5))    // wrong number of parameters entered
+  if((argc < 2) and (argc != 11))    // wrong number of parameters entered
   {
     cout <<"\n Incorrect number of command line paramters entered!\n";
     exit(1);
   }
 
-  for (int i=0; i < argc;i++)
-  {
-    cout << "Parameter : " << i << " is " << argv[i] <<" \n ";
-  }
+  // for (int i=0; i < argc;i++)
+  // {
+  //   cout << "Parameter : " << i << " is " << argv[i] <<" \n ";
+  // }
   string mode = string(argv[1]);
   string bluepath = string(argv[2]);
   string greenpath = string(argv[3]);
