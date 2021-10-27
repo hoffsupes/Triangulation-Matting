@@ -61,9 +61,6 @@ g++ src/main.cpp src/image.cpp src/video.cpp src/video_matte_applier.cpp src/mat
                path_to_green_still_image \
                path_to_foreground_image \
                path_to_alpha_image \
-               image_scaling_value_for_faster_processing \
-               0_or_1_for_video_display_only \
-               0_or_1_to_display_output_or_not
 ```
 
 The above options are explained as follows:
