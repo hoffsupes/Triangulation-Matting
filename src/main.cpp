@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv) // main
 {
-  if((argc < 2) and (argc != 11))    // wrong number of parameters entered
+  if((argc < 2) and (argc != 12))    // wrong number of parameters entered
   {
     cout <<"\n Incorrect number of command line paramters entered!\n";
     exit(1);
