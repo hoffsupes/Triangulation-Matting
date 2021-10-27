@@ -19,22 +19,20 @@ void VideoMatte::mattedVideoOutput(string foregroundpath, string maskpath,string
   // if video_only flag set then only outputs a video file, otherwise also outputs per frame alpha mask and mattedFrame file as well, will always output video file by default
 
   int i = 0,flag=1;
-  unordered_map<string,string> result_parameters = blue_video.get_parameters();
-  result_video.setWriterToPath(videopath,result_parameters,true);
-  foregroundpath = utility.sanitize_folder_path(foregroundpath);
-  maskpath = utility.sanitize_folder_path(maskpath);
+  unordered_map<string,string> result_parameters = blue_video.get_parameters(); // get parameters from blue_video to initialize results_video
+  result_video.setWriterToPath(videopath,result_parameters,true); // use them to actually intialize results video
 
 
-  while(blue_video.frame_pos() < blue_video.total_frames())
+  while(blue_video.frame_pos() < blue_video.total_frames()) // easy read of videos
   {
     Image blueframe = blue_video.get_frame();
-    Image greenframe = green_video.get_frame();
+    Image greenframe = green_video.get_frame(); // get frames
 
-    if(scale != 1.0)
+    if(scale != 1.0)    // scale is not one, if it is, don't needlessly call resize
     {
       blueframe.resize_image(scale);
       greenframe.resize_image(scale);
-      if(flag)
+      if(flag)        // don't keep resizing blank images over and over again
       {
         bluestill.resize_image(scale);
         greenstill.resize_image(scale);
@@ -43,29 +41,29 @@ void VideoMatte::mattedVideoOutput(string foregroundpath, string maskpath,string
 
     }
 
-    trimatting(blueframe,greenframe,bluestill,greenstill);
+    trimatting(blueframe,greenframe,bluestill,greenstill);    // call the trimatting function
 
     Image mattedFrame = get_matted_image();
     mattedFrame.convert(CV_8UC3,255.0);
     Image frameMask = get_alpha_mask();
-    frameMask.convert(CV_8UC1,255.0);
+    frameMask.convert(CV_8UC1,255.0);     // type conversions for results
 
-    result_video.write_frame(mattedFrame);
+    result_video.write_frame(mattedFrame);      // write video, always
 
-    if(!video_only)
+    if(!video_only)                               // only video output?
     {
       mattedFrame.write(utility.iterative_name(foregroundpath,i));
-      frameMask.write(utility.iterative_name(maskpath,i));
+      frameMask.write(utility.iterative_name(maskpath,i));      // write Results
     }
 
-    if(display)
+    if(display)                                 // display the output if flag set
     {
       Mat newmask;
-      cvtColor(frameMask.get_image(), newmask, COLOR_GRAY2BGR);
-      hconcat(mattedFrame.get_image(),newmask,newmask);
+      cvtColor(frameMask.get_image(), newmask, COLOR_GRAY2BGR); // to concatentate results, need to be 3 layer repeated values
+      hconcat(mattedFrame.get_image(),newmask,newmask);   // get new concatenated frame
       imshow("Image Matting Results",newmask);
-      waitKey(25);
-      if(i%100 == 0)
+      waitKey(25);                                            // waits for 25 ms before proceeding
+      if(i%100 == 0)    // display count per 100 iterations
       {cout << "\n Frame Number: " << i << "\n";}
     }
 
