@@ -75,14 +75,13 @@ The above options are explained as follows:
 Example:
 
 ```
-./bin/main \
-image-matte \
-data/b0.png \
-data/g0.png \
-data/b0_blank.png \
-data/g0_blank.png  \
-data/mattedImage.png \
-data/finalMask.png
+./bin/main     image-matte \
+               data/b0.png \
+               data/g0.png \
+               data/b0_blank.png \
+               data/g0_blank.png  \
+               data/mattedImage.png \
+               data/finalMask.png
 ```
 
 ### Video Matting
@@ -124,16 +123,15 @@ The above options are explained as follows:
 Example:
 
 ```
-./bin/main \
-video-matte \
-data/Videos/blue_.mp4  \
-data/Videos/green_.mp4 \
-data/b0.png   \
-data/g0.png   \
-data/Foreground  \
-data/Alpha    \
-data/Videos/final_matte.avi \
-0.01 0 1 
+./bin/main    video-matte \
+              data/Videos/blue_.mp4  \
+              data/Videos/green_.mp4 \
+              data/b0.png   \
+              data/g0.png   \
+              data/Foreground  \
+              data/Alpha    \
+              data/Videos/final_matte.avi \
+              0.01 0 1
 ```
 
 ## Test Suites
