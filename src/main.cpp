@@ -37,7 +37,7 @@ int main(int argc, char** argv) // main
     Image bluesstill_image = Image(bluesstillpath);
     Image greenstill_image = Image(greenstillpath);
 
-    Matte matte = Matte(bluepath_image,greenpath_image,bbluesstill_image,greenstill_image); // quick initializations from filenames!
+    Matte matte = Matte(bluepath_image,greenpath_image,bluesstill_image,greenstill_image); // quick initializations from filenames!
     matte.apply_matte();    // apply matting to blue image, green image, blue and green background only images
     Image mattedImage = matte.get_matted_image(); // get result
     Image alphaMask = matte.get_alpha_mask();   // get mask
