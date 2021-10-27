@@ -47,7 +47,7 @@ int main()
 
   tf.DISPLAY_SUMMARY();
 
-  cout << "\n Checking to see if abberant attempt to read from non-initialized VideoCapture will result in exit from program or not. Successful run shoud exit program gracefully after displaying a message in next line. \n";
+  cout << "\n Checking to see if abberant attempt to read from non-initialized VideoCapture will result in exit from program or not. Successful run should exit program gracefully (and exit make) after (throwing an error) displaying a message in next line. \n";
   emptyvideo.get_frame(); // checking to see if abberant attempt to read from non-existant VideoCapture stream (since we never gave it input path) is accounted for or not
   return 0;
 }

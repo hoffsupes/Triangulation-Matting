@@ -24,7 +24,7 @@ utilities-test:
 tester-test:
 	rm bin/tester_test; g++ tests/tester-test.cpp -Iinclude -o bin/tester_test `pkg-config --cflags --libs opencv4`;./bin/tester_test;
 
-test-all: clean tester-test utilities-test image-test matte-test video_matte-test main-test video-test; ## run complete test suite
+test-all: tester-test utilities-test image-test matte-test video_matte-test main-test video-test; ## run complete test suite
 
 clean:
 	rm bin/*;
