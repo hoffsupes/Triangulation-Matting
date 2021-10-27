@@ -37,7 +37,7 @@ void Image::write(string path)
 
   if( imwrite(path.data(),image_container) != true)
   {
-      cout << "\Problem Writing image "<< image_name <<"results! Exiting!! Restart Code again, sorry!\n";
+      cout << "\n Problem Writing image "<< image_name <<"results! Exiting!! Restart Code again, sorry!\n";
       exit(1);
   }
 }

@@ -152,7 +152,9 @@ Makefile tests are included, to run them traverse to the root of the directory a
     Test capabilites of the `miniUtilities` class
 7. `make tester-test`:
     Test capabilites of the `tester` class
-8. `make clean`:
+8. `make main-test`:
+    Test main.cpp
+9. `make clean`:
     Cleans everything up, deletes content of `Foreground` and `Alpha` folder and even the `bin` folder
 
 ## Directory structure
