@@ -10,7 +10,7 @@ This can be thought of as:
 
 **GreenBackgroundForegroundImage = alpha*foreground + (1 - alpha) * BlankGreenBackgroundImage**
 
-or
+or on being solved, leads to a set of linear equations which can be represented as:
 
 ![matting](https://user-images.githubusercontent.com/28497335/138963602-8a587a14-66e9-44fa-8e72-17e2481bdc2a.png)
 
