@@ -36,7 +36,7 @@ This work was originally done towards a final project in a Computer Vision cours
 
 
 1. Install dependencies as seen [here](https://linuxize.com/post/how-to-install-opencv-on-ubuntu-18-04/)
-2. Install openCV: `sudo apt install libopencv libopencv-dev`, this codebase reuires **OpenCV version 4**.
+2. Install openCV: `sudo apt install libopencv libopencv-dev`, this codebase requires **OpenCV version 4**.
 3. Windows users see [this](https://learnopencv.com/install-opencv-on-windows/) or use chocolatey. Mac users see [this](https://www.pyimagesearch.com/2018/08/17/install-opencv-4-on-macos/).
 4. Install ffmpeg: `sudo apt install ffmpeg`. Windows users, please see [this](https://www.wikihow.com/Install-FFmpeg-on-Windows). Mac users, [this](http://jollejolles.com/install-ffmpeg-on-mac-os-x/).
 5. Clone this repo: `git clone https://github.com/hoffsupes/Triangulation-Matting.git`
