@@ -43,6 +43,9 @@ int main(int argc, char** argv) // main
     Image mattedImage = matte.get_matted_image(); // get result
     Image alphaMask = matte.get_alpha_mask();   // get mask
 
+    alphaMask.convert(CV_8UC1,255.0); // 8 bit pixel values
+    mattedImage.convert(CV_8UC3,255.0); // 8 bit pixel values
+
     mattedImage.write(foregroundpath);
     alphaMask.write(alphapath); // write them
   }
