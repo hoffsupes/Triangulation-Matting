@@ -2,7 +2,7 @@
 
 Does triangulation matting using blue and green background images (and videos). Two images of the same object are taken with different backgrounds, blue and green.
 This is used along with two blank images of same background to infer values of the alphamask and foreground which when blended together with the
-given (blank) background, produce the images of the object (on the different backgrounds). This alphamask and foreground can then be applied to other places or place the foreground in other places as needed.
+given (blank) background, produce the images of the object (on the different backgrounds). This alphamask and foreground can then be applied to other places or place the foreground in other images as needed.
 
 This can be thought of as:
 
