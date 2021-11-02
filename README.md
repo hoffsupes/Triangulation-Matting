@@ -1,8 +1,8 @@
-# Triangulation Matting
+# Triangulation Matting: Foregound and Alphamask extraction for Still Images and Videos
 
 Does triangulation matting using blue and green background images (and videos). Two images of the same object are taken with different backgrounds, blue and green.
 This is used along with two blank images of same background to infer values of the alphamask and foreground which when blended together with the
-given (blank) background, produce the images of the object (on the different backgrounds). This alphamask and foreground can then be applied to other places or place the foreground in other images as needed.
+given (blank) background, produce the images of the object (on the different backgrounds). This alphamask and foreground can then be applied to other places or place the foreground in other images as needed. For this excercise, we only extract the foreground and alphamask (although they can be used later). All images and videos processed focus on this functionality (alphamask and foreground extraction) and the results reflect as such.
 
 This can be thought of as:
 
