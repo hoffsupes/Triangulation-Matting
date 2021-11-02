@@ -2,7 +2,7 @@
 
 Does triangulation matting using blue and green background images (and videos). Two images of the same object are taken with different backgrounds, blue and green.
 This is used along with two blank images of same background to infer values of the alphamask and foreground which when blended together with the
-given background produce the images of the object (on the different backgrounds).
+given (blank) background, produce the images of the object (on the different backgrounds).
 
 This can be thought of as:
 
@@ -10,7 +10,7 @@ This can be thought of as:
 
 **GreenBackgroundForegroundImage = alpha*foreground + (1 - alpha) * BlankGreenBackgroundImage**
 
-or on being solved, leads to a set of linear equations which can be represented as:
+or on being further solved, leads to a set of linear equations which can be represented as:
 
 ![matting](https://user-images.githubusercontent.com/28497335/138963602-8a587a14-66e9-44fa-8e72-17e2481bdc2a.png)
 
@@ -19,7 +19,7 @@ or on being solved, leads to a set of linear equations which can be represented 
 Has capability to process videos (read and write) and to do this matting on every frame of a video and on still images.
 
 The original green and blue background videos which I originally used a long time ago are sadly lost ( :( ) but I have created two artificial videos
-from the still (foreground with relevant, blue or green background color) images I still had. These artificial videos are simply repetitions of the same image over a thirty second period, sampled at 30 frames per second. When matting is run using them though, due to certain discrepancies in image quality when performing that image to video conversion (the background colors end up getting varied and destroyed due to the loss in quality, hence a "mismatch" from the original background images to the original blank images I have, i.e. the equations you see above assume that we're using the same background images at a time, `object_on_blue_background`-`blank_blue_background` or `object_on_green_background`-`blank_green_background` which is not happening anymore), the actual alpha matte and matted frame from the per frame of the video vary from when those same still images (used to produce the videos) are independently used to create the matte. This is very interesting and you can even see this when you try out the tests.
+from the still (foreground with relevant, blue or green background color) images I still had. These artificial videos are simply repetitions of the same image over a thirty second period, sampled at 30 frames per second. When matting is run using them though, due to certain discrepancies in image quality when performing that image to video conversion (the background colors end up getting varied and destroyed due to the loss in quality, hence a "mismatch" between the  background values in the video frames to that in the original blank images I have, i.e. the equations you see above assume that we're using the same background values at a time, `object_on_blue_background`-`blank_blue_background` or `object_on_green_background`-`blank_green_background` which is not happening anymore), the actual alpha matte and matted frame from the per frame of the video vary from when those same still images (used to produce the videos) are independently used to create the matte. This is very interesting and you can even see this when you try out the tests.
 
 I've modeled my own very simple `Image` class which is used by a `Video` class. The ``Video`` class has capabilities to very simply read and write videos all in one place.
 That includes releasing the actual object files after use which is very important in a language like C++. I also create a Matting (`Matte`) class which relies on the `Image` class to do the Matting. The Matting class is then extended to a `VideoMatte` class (which inherits all the properties of the Matting class) that adds capability to read the blue and green background videos, and write the result video; all using capabilities of the `Video` class. Although point to note, that this is in no way a critique of the openCV library which absolutely amazing and this work only seeks to make the methods which would typically be relevant (or more commonly used in regards to it) to this specific problem(i.e. video matting) simpler to use and encapsulated closely with the data it would work on. The numerosity of OpenCV is what make it quite powerful in terms of the massive number of features it offers.
@@ -79,7 +79,7 @@ Example:
                data/b0.png \
                data/g0.png \
                data/b0_blank.png \
-               data/g0_blank.png  \
+                 data/g0_blank.png  \
                data/mattedImage.png \
                data/finalMask.png
 ```
