@@ -10,7 +10,7 @@ As in the original work and (for this excercise), we're only interested in extra
 
 All images and videos processed focus on this functionality (alphamask and foreground extraction) and the results reflect as such.
 
-`Before moving forward, please consider looking at the [appendix](#Appendix) to get a super quick overview of related concepts, if you're so interested; otherwise, feel free to read on.`
+`Before moving forward, please consider looking at the` [appendix](#Appendix) `to get a super quick overview of related concepts, if you're so interested; otherwise, feel free to read on.`
 
 If there's such an alphamask or a *single channel per pixel floating point image*, `alpha` which can properly capture the presence of the `foreground` (per pixel) in terms of floating point weights between zero and one, then it can be used to split an image into `foreground` and `background` by using it's original values and inverse values, i.e. `(1-alpha)`. Doing this over two differently colored backgrounds (green and blue) it can be represented as:
 
