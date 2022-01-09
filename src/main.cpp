@@ -22,7 +22,7 @@ int main(int argc, char** argv) // main
   string foregroundpath = string(argv[6]);
   string alphapath = string(argv[7]); // all parameters read
 
-  if(mode == string("video-matte"))
+  if(mode == string("video-matte"))       // The video matting mode
   {
     string mattedvideopath = string(argv[8]);
     double scale = atof(argv[9]);
@@ -31,12 +31,12 @@ int main(int argc, char** argv) // main
     VideoMatte vmatter = VideoMatte(bluepath,greenpath,bluesstillpath,greenstillpath); //
     vmatter.mattedVideoOutput(foregroundpath, alphapath,mattedvideopath, video_only,scale,display);   // matted video output
   }
-  else if(mode == string("image-matte"))
+  else if(mode == string("image-matte"))   // Still image matting mode
   {
     Image bluepath_image = Image(bluepath);
     Image greenpath_image = Image(greenpath);
     Image bluesstill_image = Image(bluesstillpath);
-    Image greenstill_image = Image(greenstillpath);
+    Image greenstill_image = Image(greenstillpath);   // get images
 
     Matte matte = Matte(bluepath_image,greenpath_image,bluesstill_image,greenstill_image); // quick initializations from filenames!
     matte.apply_matte();    // apply matting to blue image, green image, blue and green background only images
