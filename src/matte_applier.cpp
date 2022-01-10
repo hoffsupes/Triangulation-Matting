@@ -33,7 +33,7 @@ Mat Matte::do_difference_matting(Mat I1,Mat I2,Mat B1,Mat B2,Mat & F)
     //   - I2 (Mat): The background image of color two containing the foreground
     //   - B1 (Mat): The blank background image of color one containing no foreground
     //   - B2 (Mat): The blank background image of color two containing no foreground
-    //   - F (Mat): The foreground mask, called by reference, hence value returned on processing
+    //   - F (Mat): The foreground mask, passed by reference, hence value returned on processing
     // output arguments:
     //   - alpha (Mat): The alphamatte estimated on solving the triangulation matting equations
 
