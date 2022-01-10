@@ -29,11 +29,11 @@ void VideoMatte::mattedVideoOutput(string foregroundpath, string maskpath,string
   //   - foregroundpath (string): The path to the foler where the foregrounds from per frame processing are saved as images, only if video_only flag is not set
   //   - maskpath (string): The path to the folder where to save the per frame alphamatte as images, only if video_only flag is not set
   //   - videopath (string): The path to the output video of foregrounds from per frame processing
-  //   - video_only (bool): The flag which if set only outputs the foreground video to videopath, if not set, also additionally outputs the per frame alphamatte and foreground images to the respective maskpath and foregroundpath folders
-  //   - scale (double): The scaling factor by which all input must be scaled to before doing any matting, for testing purposes
-  //   - display (bool): The flag if set, diplays the foreground and alphamatte as the per frame processing is happening
+  //   - video_only (bool,default value=true): The flag which if set only outputs the foreground video to videopath, if not set, also additionally outputs the per frame alphamatte and foreground images to the respective maskpath and foregroundpath folders
+  //   - scale (double,default value=1.0): The scaling factor by which all input must be scaled to before doing any matting, for testing purposes
+  //   - display (bool,default value=true): The flag if set, diplays the foreground and alphamatte as the per frame processing is happening
   // output arguments: None
-  
+
   int i = 0,flag=1;
   unordered_map<string,string> result_parameters = blue_video.get_parameters(); // get parameters from blue_video to initialize results_video
   result_video.setWriterToPath(videopath,result_parameters,true); // use them to actually intialize results video
