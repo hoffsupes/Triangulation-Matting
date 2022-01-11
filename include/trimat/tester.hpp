@@ -29,19 +29,39 @@ class tester
 
 vector<string> tester::get_fails()
 {
-  // getter for fails
+  /**
+  getter for fails
+
+  input arguments: None
+  output arguments:
+     - fails (vector<string>): The vector of failures while running the code, contains all status and error messages per fail
+  */
   return fails;
 }
 
 vector<string> tester::get_successes()
 {
-  // getter for successes
+  /**
+  getter for successes
+
+  input arguments: None
+  output arguments:
+     - successes (vector<string>): The vector of successes while running the code, contains all status messages per success
+  */
   return successes;
 }
 
 void tester::TESTER(string testname, bool condition, source_location location)
 {
-  // performs a test labeled as testname and sees if it is true
+    /**
+  performs a test labeled as testname and sees if it is true
+
+  input arguments:
+     - testname (string): Label given for test name, will be used in status messages
+     - condition (bool): The condition which is checked to see if TEST passed or not
+     - location (source_location): The place in the code where the test is occurring
+  output arguments: None
+  */
 
   if(condition == false)
   {
@@ -58,6 +78,15 @@ void tester::TESTER(string testname, bool condition, source_location location)
 
 void tester::display_summary_helper(string case_string,vector<string> fails)
 {
+  /**
+a summary of fails for a set of tests
+
+input arguments:
+   - case_string (string): Label given for test name, will be used in status messages
+   - fails (vector<string>):  The vector of failures while running the code, contains all status and error messages per fail
+output arguments: None
+*/
+
   cout << "\n\n\n Number of "<< case_string.data() <<": " << fails.size();
   if(fails.size())
   {
@@ -72,9 +101,11 @@ void tester::display_summary_helper(string case_string,vector<string> fails)
 
 void tester::DISPLAY_SUMMARY()
 {
-
-  // displays summary of errors
-
+/**
+  displays summary of errors
+  input arguments: None
+  output arguments: None
+*/
   display_summary_helper("FAILURES",fails);
   display_summary_helper("SUCCESSES",successes);
 

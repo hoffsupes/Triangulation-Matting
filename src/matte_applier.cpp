@@ -2,21 +2,24 @@
 
 Matte::Matte()   // empty construtor
 {
-//
-// input arguments: None
-// output arguments: None
+  /**
+input arguments: None
+output arguments: None
+  */
  }
 
 Matte::Matte(Image bg1, Image bg2, Image bg3, Image bg4)  // parameterized constructor
 {
-  // initializes the background images and the blank background images
-  //
-  // input arguments:
-  //   - bg1 (Image): The background image of color one containing the foreground
-  //   - bg2 (Image): The background image of color two containing the foreground
-  //   - bg3 (Image): The blank background image of color one containing no foreground
-  //   - bg4 (Image): The blank background image of color two containing no foreground
-  // output arguments: None
+    /**
+  initializes the background images and the blank background images
+
+  input arguments:
+    - bg1 (Image): The background image of color one containing the foreground
+    - bg2 (Image): The background image of color two containing the foreground
+    - bg3 (Image): The blank background image of color one containing no foreground
+    - bg4 (Image): The blank background image of color two containing no foreground
+  output arguments: None
+    */
 
   BG1 = bg1;
   BG2 = bg2;
@@ -26,16 +29,20 @@ Matte::Matte(Image bg1, Image bg2, Image bg3, Image bg4)  // parameterized const
 
 Mat Matte::do_difference_matting(Mat I1,Mat I2,Mat B1,Mat B2,Mat & F)
 {
-    // does the actual triangulation matting, returns the alpha mask
-    //
-    // input arguments:
-    //   - I1 (Mat): The background image of color one containing the foreground
-    //   - I2 (Mat): The background image of color two containing the foreground
-    //   - B1 (Mat): The blank background image of color one containing no foreground
-    //   - B2 (Mat): The blank background image of color two containing no foreground
-    //   - F (Mat): The foreground mask, passed by reference, hence value returned on processing
-    // output arguments:
-    //   - alpha (Mat): The alphamatte estimated on solving the triangulation matting equations
+
+    /**
+    does the actual triangulation matting, returns the alpha mask
+
+    input arguments:
+      - I1 (Mat): The background image of color one containing the foreground
+      - I2 (Mat): The background image of color two containing the foreground
+      - B1 (Mat): The blank background image of color one containing no foreground
+      - B2 (Mat): The blank background image of color two containing no foreground
+      - F (Mat): The foreground mask, passed by reference, hence value returned on processing
+    output arguments:
+      - alpha (Mat): The alphamatte estimated on solving the triangulation matting equations
+  */
+
 
     for(int i = 0; i < I1.rows; i++)
     {
@@ -74,12 +81,15 @@ Mat Matte::do_difference_matting(Mat I1,Mat I2,Mat B1,Mat B2,Mat & F)
 
 Image Matte::float_and_norm(Image I1)
 {
-  // returns the image after float converstion and 0,1 MINMAX normalization
-  //
-  // input arguments:
-  //   - I1 (Image): The input image to process, i.e. convert to float and then normalize between zero and one
-  // output arguments:
-  //   - I1 (Image): The output image which is returned
+
+  /**
+  returns the image after float converstion and 0,1 MINMAX normalization
+
+  input arguments:
+    - I1 (Image): The input image to process, i.e. convert to float and then normalize between zero and one
+  output arguments:
+    - I1 (Image): The output image which is returned
+  */
 
   I1.convert(CV_32F);
   I1.normalize_image(0,1,NORM_MINMAX);
@@ -88,14 +98,18 @@ Image Matte::float_and_norm(Image I1)
 
 void Matte::trimatting(Image background1,Image background2,Image background1_blank,Image background2_blank)
 {
-  // a helper function which actually uses the do_difference_matting and takes care of intensity scaling and other initalizations as required
-  //
-  // input arguments:
-  //   - background1 (Image): The background image of color one containing the foreground
-  //   - background2 (Image): The background image of color two containing the foreground
-  //   - background1_blank (Image): The blank background image of color one containing no foreground
-  //   - background2_blank (Image): The blank background image of color two containing no foreground
-  // output arguments: None
+
+  /**
+  a helper function which actually uses the do_difference_matting and takes care of intensity scaling and other initalizations as required
+
+  input arguments:
+    - background1 (Image): The background image of color one containing the foreground
+    - background2 (Image): The background image of color two containing the foreground
+    - background1_blank (Image): The blank background image of color one containing no foreground
+    - background2_blank (Image): The blank background image of color two containing no foreground
+  output arguments: None
+  */
+
 
   background1 = float_and_norm(background1);
   background2 = float_and_norm(background2);
@@ -111,20 +125,28 @@ void Matte::trimatting(Image background1,Image background2,Image background1_bla
 
 void Matte::apply_matte()
 {
-  // direct matting fucntion, in case you use this as an object
-  // input arguments: None
-  // output arguments: None
+
+  /**
+  direct matting fucntion, in case you use this as an object
+  input arguments: None
+  output arguments: None
+  */
+
 
   trimatting(BG1,BG2,BG1_blank,BG2_blank);
 }
 
 Image Matte::get_matted_image()
 {
-  // getter, returns mattedImage
-  //
-  // input arguments: None
-  // output arguments:
-  //   - mattedImage (Image): The estimated foreground image which is returned
+
+  /**
+  getter, returns mattedImage
+
+  input arguments: None
+  output arguments:
+    - mattedImage (Image): The estimated foreground image which is returned
+  */
+
 
   return mattedImage;
 }
@@ -132,11 +154,16 @@ Image Matte::get_matted_image()
 Image Matte::get_alpha_mask()
 {
 
-    // getter, returns alpha mask
-    //
-    // input arguments: None
-    // output arguments:
-    //   - finalMask (Image): The estimated alphamatte which is returned
+
+  /**
+    getter, returns alpha mask
+
+    input arguments: None
+    output arguments:
+      - finalMask (Image): The estimated alphamatte which is returned
+  */
+
+
 
     return finalMask;
 }
