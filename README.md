@@ -273,7 +273,7 @@ Matting or keying is the problem of estimating a given foreground and the alpham
 We don't segment or threshold values, rather we solve an equation at every pixel (at most three equations with seven unknowns but with certain assumtions they can be  reduced to three unknowns; seen below for green screen matting) to obtain the values of the FG and alphamask (assuming that the color within the background does not exist within the foreground at all, e.g. greenscreen matting assumes that green does not exist within the foreground and that the background color contains only the green component of color -- that is, no red or blue). The alphamask, `alpha` is nothing but a similar binary mask, **except** that now every dot or pixel has capability to be both foreground and background at the same time (the floating point value per pixel denoting the percentage of how much a pixel could roughly belong to the foreground), i.e. values are floating point and range from zero to one instead of just zero and one (here, values of one imply opaqueness, i.e. certain existance of foreground; while zero implies complete transparency, i.e. no exisitance of foreground).
 
 <p align="center">
-  <img src="https://i.imgur.com/Rp7RElD.png"/>
+<img src="https://i.imgur.com/uzeAZYM.png/"">
 </p>
 
 
